@@ -1,0 +1,13 @@
+<div id="videogame-detail">
+    <h2>{{videogame.title}}</h2>
+    <p>{{videogame.description}}</p>
+    <small>{{videogame.price}}</small>
+     <button hx-get={% url "videogameList" %}
+       hx-trigger="click"
+       hx-target="#videogame-detail"
+       hx-swap="outerHTML"
+       hx-push-url="true">
+        Return to list
+    </button>           
+</div>
+
