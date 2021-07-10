@@ -1,0 +1,11 @@
+<div id="videogame-list">
+   <form 
+    hx-post={% url "videogameCreate" %}
+    hx-target="#videogame-list"
+    hx-swap="outerHTML"
+    hx-push-url="true">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form> 
+</div>
