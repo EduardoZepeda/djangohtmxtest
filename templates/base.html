@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{{ site.name }}{% endblock %}</title>
-    {% block meta %}
-      <meta name="generator" content="Htmx">
-      <meta name="theme-color" content="#333333">
-      <meta name="msapplication-TileColor" content="#BBBBBB">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black">
-      <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
-      <meta property="og:type" content="website">
-      {% endblock meta %}
-    <script src="https://unpkg.com/htmx.org@1.4.1"></script>
-</head>
-<body>
+{% if not request.META.HTTP_HX_REQUEST %}
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{{ site.name }}{% endblock %}</title>
+        {% block meta %}
+          <meta name="generator" content="Htmx">
+          <meta name="theme-color" content="#333333">
+          <meta name="msapplication-TileColor" content="#BBBBBB">
+          <meta name="apple-mobile-web-app-capable" content="yes">
+          <meta name="apple-mobile-web-app-status-bar-style" content="black">
+          <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
+          <meta property="og:type" content="website">
+          {% endblock meta %}
+        <script src="https://unpkg.com/htmx.org@1.4.1"></script>
+    </head>
+    <body>
+{% endif %}
     {% block header %}{% endblock header %}
     {% block body %}{% endblock body %}
     {% block footer %}{% endblock footer %}
-</body>
-</html>
+{% if not request.META.HTTP_HX_REQUEST %}
+    </body>
+    </html>    
+{% endif %}

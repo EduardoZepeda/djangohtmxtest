@@ -1,22 +1,26 @@
-<div id="videogame-list">
-{% for videogame in videogames %}
-    <a 
-        hx-get={% url "videogameDetail" videogame.pk %}
-        hx-trigger="click"
-        hx-target="#videogame-list"
-        hx-swap="outerHTML"
-        hx-push-url="true">
-        <h2>{{videogame.title}}</h2>
-        <p>{{videogame.description|truncatewords:15}}</p>
-        <button>Read more</button>
-    </a>
-{% endfor %}
-    <a 
-        hx-get={% url "videogameCreate" %}
-        hx-trigger="click"
-        hx-target="#videogame-list"
-        hx-swap="outerHTML"
-        hx-push-url="true">
-        <button>Submit a videogame</button>
-    </a>
-</div>
+{% extends "base.html" %}
+{% block body %}
+
+    <div id="videogame-list">
+    {% for videogame in videogames %}
+        <a 
+            hx-get={% url "videogameDetail" videogame.pk %}
+            hx-trigger="click"
+            hx-target="#videogame-list"
+            hx-swap="outerHTML"
+            hx-push-url="true">
+            <h2>{{videogame.title}}</h2>
+            <p>{{videogame.description|truncatewords:15}}</p>
+            <button>Read more</button>
+        </a>
+    {% endfor %}
+        <a 
+            hx-get={% url "videogameCreate" %}
+            hx-trigger="click"
+            hx-target="#videogame-list"
+            hx-swap="outerHTML"
+            hx-push-url="true">
+            <button>Submit a videogame</button>
+        </a>
+    </div>
+{% endblock body %}
